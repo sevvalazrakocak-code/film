@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Film Arama</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 50px; }
+        .card { border: 1px solid #ccc; padding: 20px; display: inline-block; margin-top: 20px; border-radius: 10px; }
+        img { max-width: 200px; }
+    </style>
+</head>
+<body>
+    <h1>Film Arama Servisi (v1.0)</h1>
+    <form method="POST">
+        <input type="text" name="movie_name" placeholder="Film adı (İngilizce)..." required>
+        <button type="submit">Ara</button>
+    </form>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    {% if movie %}
+        <div class="card">
+            <h2>{{ movie.Title }} ({{ movie.Year }})</h2>
+            <img src="{{ movie.Poster }}" alt="Poster">
+            <p><strong>IMDB Puanı:</strong> {{ movie.imdbRating }}</p>
+            <p>{{ movie.Plot }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
